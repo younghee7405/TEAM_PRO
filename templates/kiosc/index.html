@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>KFC 키오스크 - 화면1</title>
+    <style>
+        body { margin: 0; text-align: center; background-color: #fff; }
+        img { width: 100%; max-width: 393px; }
+       button {
+            font-size: 20px; margin-top: 20px; padding: 10px 20px;
+            background-color: red; color: white; border: none; cursor: pointer;
+            border-radius:  50px;
+        }
+        a{text-decoration: none; color: inherit;}
+        .btn{
+            display: block;
+            margin:10px auto ;
+
+        }
+
+        .pop{
+            width: 100%;
+            max-width: 393px;
+            margin: 0 auto;
+            background-color: rgba(0,0,0,0.8);
+            height: 100%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .pop_inner{
+            padding: 30px;
+            background: white;
+            border-radius: 5px;
+            font-weight: bold;
+            position: absolute;
+            left: 50%;top: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- audio 태그: muted 제거 -->
+    <audio id="welcomeAudio">
+        <source src="{{ url_for('static', filename='kiosc/audio/welcome.wav') }}" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- 이미지 링크 -->
+    <a href="/screen2">
+        <img src="{{ url_for('static', filename='/kiosc/KFC-1.png') }}" alt="KFC Step 1">
+    </a>
+     <a href="/" class="btn"><button>처음으로</button></a>
+
+    <!-- 팝업 - 화면 터치시 playAudio() 실행 -->
+    <div class="pop">
+        <div class="pop_inner" onclick="playAudio()">
+            화면을 터치하세요
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function playAudio() {
+            var audio = document.getElementById('welcomeAudio');
+            audio.play().then(function() {
+                console.log('Audio is playing');
+            }).catch(function(error) {
+                console.log('Autoplay prevented:', error);
+            });
+
+            // 팝업 숨기기 (선택사항)
+            document.querySelector('.pop').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>

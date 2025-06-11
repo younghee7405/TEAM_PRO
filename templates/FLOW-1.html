@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>시니아이</title>
+    <style>
+        body { margin: 0; text-align: center; background-color: #fff; box-sizing: border-box;}
+       .bg { 
+            background: url('{{ url_for('static', filename='FLOW-1.png') }}') no-repeat center center;
+            background-size: cover;
+            width: 100%;
+            max-width: 393px;
+            margin: 0 auto;
+            height: 100vh; /* 화면 전체 높이 */
+            border:1px solid black;
+            border-radius: 50px;
+            }
+
+        img { width: 100%; max-width: 393px; }
+        .button {
+            display: block;
+            font-size: 20px; margin: 20px  auto; padding: 10px ;
+            width: 300px;
+            background-color: white; color: black; border: none; cursor: pointer;
+            border-radius: 30px;
+            box-shadow: 0 4px 5px gray;
+            position: absolute;
+            top: 200px;
+            left: 50%;
+            transform: translate(-50%,0);            
+        }
+
+        .button.btn2{
+            top: 400px;
+        }
+        a{text-decoration: none; color: inherit; transition: all 0.3s;}
+        a:hover{
+            background-color: #444;
+            color: white;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="bg"></div>
+    </div>
+<!-- 이미지 링크 -->
+    <a href="/screen1" class="button btn1"> 키오스크</a>
+    <!-- <a href="/self" class="button btn2"> 테이블오더</a> -->
+    <a href="/tscreen1" class="button btn2"> 테이블오더</a>
+
+
+
+</body>
+</html>
