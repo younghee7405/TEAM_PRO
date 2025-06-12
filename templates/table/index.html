@@ -11,15 +11,68 @@
             height: 800px;}
         img{height: 100%;}
 
+
+        .pop{
+            width: 100%;
+            max-width: 1366px;
+            margin: 0 auto;
+            background-color: rgba(0,0,0,0.8);
+            height: 100%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .pop_inner{
+            padding: 30px;
+            background: white;
+            border-radius: 5px;
+            font-weight: bold;
+            position: absolute;
+            left: 50%;top: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+
  
       
     </style>
 </head>
 <body>
 
+
+
     <a href="/tscreen2">
         <img  src="{{ url_for('static', filename='/table/할맥1.png') }}">
     </a>
+
+
+    <!-- 팝업 - 화면 터치시 playAudio() 실행 -->
+    <div class="pop">
+        <div class="pop_inner" onclick="playAudio()">
+            화면을 터치하세요
+        </div>
+    </div>  <!-- audio 태그: muted 제거 -->
+    <audio id="welcomeAudio">
+       <source src="{{ url_for('static', filename='kiosc/audio/20250610_안녕하세요_역전할머.wav') }}" type="audio/wav">
+       Your browser does not support the audio element.
+   </audio>
+
+
+   <!-- JavaScript -->
+<script>
+    function playAudio() {
+        var audio = document.getElementById('welcomeAudio');
+        audio.play().then(function() {
+            console.log('Audio is playing');
+        }).catch(function(error) {
+            console.log('Autoplay prevented:', error);
+        });
+
+        // 팝업 숨기기 (선택사항)
+        document.querySelector('.pop').style.display = 'none';
+    }
+</script>
 
 </body>
 </html>
